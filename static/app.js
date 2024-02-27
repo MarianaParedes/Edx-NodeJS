@@ -1,4 +1,4 @@
-const API = 'http://localhost:3008'
+const API = 'http://localhost:3000'
 
 const populateProducts = async (category) => {
   const products = document.querySelector('#products')
@@ -24,7 +24,6 @@ category.addEventListener('input', async ({ target }) => {
   await populateProducts(target.value)
 })
 
- 
 
  customElements.define('product-item', class Item extends HTMLElement {
   constructor() {
