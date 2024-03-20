@@ -7,11 +7,13 @@ const data = [
     info: "Delicious overpriced chocolate.",
   },
 ];
-export default async function (fastify) {
+export default async function (fastify, opts) {
   fastify.get("/", async function (request, reply) {
-    return data
-})
-// fastify.get("/foo", async function (request, reply) {
-//     return data
-// })
-};
+    return data;
+  });
+  fastify.post("/", async function (request, reply) {
+    fastify.mockDataInsert(request, opts.prefix.slice(1), data);
+    console.log(opts.prefix.slice(1))
+    return data;
+  });
+}
