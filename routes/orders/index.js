@@ -5,7 +5,13 @@ export default async function (fastify, opts) {
     "/:category",
     { websocket: true },
     async ({ socket }, request) => {
-      console.log(socket)
-      socket.send(JSON.stringify({ id: "A1", total: 3 }));
+      for (const order of fastify.currentOrders(request.params.category)) {
+        socket.send(order);
+      }
+      for await (const order of fastify.realtimeOrders()) {
+        if (socket.readyState >= socket.CLOSING) break;
+        socket.send(order);
+      }
     }
-  )};
+  );
+}
