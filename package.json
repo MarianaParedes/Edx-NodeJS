@@ -3,7 +3,7 @@
   "name": "n4",
   "description": "This project was bootstrapped with Fastify-CLI.",
   "version": "1.0.0",
-  "main": "app.js",
+  "main": "app.mjs",
   "directories": {
     "test": "test"
   },
@@ -140,8 +140,8 @@
   },
   "scripts": {
     "test": "node --test test/**/*.test.js",
-    "start": "fastify start -l info app.js",
-    "dev": "fastify start -w -l info -P app.js",
+    "start": "fastify start -l info app.mjs",
+    "dev": "fastify start -w -l info -P app.mjs",
     "static": "serve -p 5050 static"
   },
   "keywords": [],
